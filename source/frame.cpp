@@ -88,7 +88,7 @@ void frame::OnOpen(wxCommandEvent& event)
 {
     if (can.can_undo())
     {
-        if (wxMessageBox(_("当前的盘面还没有保存，打开已有盘面后当前盘面将会丢失，要继续吗？"), _("确认放弃当前盘面"),
+        if (wxMessageBox(_("当前的棋谱还没有保存，打开已有棋谱后当前棋谱将会丢失，要继续吗？"), _("确认放弃当前棋谱"),
                          wxICON_QUESTION | wxYES_NO, this) == wxNO )
             return;
         //else: proceed asking to the user the new file to open
