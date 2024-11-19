@@ -1,6 +1,6 @@
-# GoPlusPlus 项目
+# Westlake-Go-Notation-Program 项目
 
-GoPlusPlus 是一个围棋游戏客户端，使用 C++ 和 wxWidgets 编写，支持 Windows 操作系统。
+Westlake-Go-Notation-Program 是一个围棋游戏客户端，使用 C++ 和 wxWidgets 编写，支持 Windows 操作系统。
 
 ## 目录结构
 
@@ -36,7 +36,7 @@ pacman -S mingw-w64-x86_64-wxwidgets
 make
 ```
 
-这将执行编译流程，生成最终的可执行文件 `GoPlusPlus.exe`，位于 `binary/` 目录中。
+这将执行编译流程，生成最终的可执行文件 `Westlake-Go-Notation-Program.exe`，位于 `binary/` 目录中。
 
 ### 2. 运行项目
 
@@ -46,7 +46,7 @@ make
 make run
 ```
 
-这将启动 `GoPlusPlus` 应用程序。
+这将启动 `Westlake-Go-Notation-Program` 应用程序。
 
 ## 配置说明
 
@@ -55,7 +55,7 @@ make run
 - `CXXFLAGS`：C++ 编译器选项，如启用多线程支持、指定 Unicode 编码等。
 - `LINKFLAGS`：链接器选项，包含静态链接、添加 wxWidgets 和 Windows 必需的库等。
 - `CXX` 和 `LINK`：指定 C++ 编译器和链接器。
-- `BIN_NAME`：指定生成的可执行文件名称（`GoPlusPlus`）。
+- `BIN_NAME`：指定生成的可执行文件名称（`Westlake-Go-Notation-Program`）。
 
 ## 常见问题
 
