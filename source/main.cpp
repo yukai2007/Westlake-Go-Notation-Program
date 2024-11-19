@@ -15,7 +15,7 @@ bool GoPlusPlusApp::OnInit()
 
     locale = new wxLocale(wxLANGUAGE_CHINESE_SIMPLIFIED);
     if (! locale->IsOk())
-        wxMessageBox(wxT("不能加载本地化数据，因此一部分界面元素可能会显示为西文。"));
+        wxMessageBox(wxT("不能加载本地化数据，因此一部分界面元素可能会显示为英语。"));
     locale->AddCatalog(wxT("GoPlusPlus"));
 
     auto f = new frame;
