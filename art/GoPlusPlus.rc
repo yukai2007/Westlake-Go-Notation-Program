@@ -1,0 +1,12 @@
+#include <wx/msw/wx.rc>
+
+aaaMAIN_ICON ICON "icon.ico"
+
+1 24 MOVEABLE PURE "xp_style.manifest"
+BLACK       RCDATA "black1.png"
+BLACK_ALPHA RCDATA "black1_alpha.png"
+WHITE       RCDATA "white1.png"
+WHITE_ALPHA RCDATA "white1_alpha.png"
+BKG         RCDATA "wooden_texture.png"
+BKG2        RCDATA "wooden_texture_2.png"
+
