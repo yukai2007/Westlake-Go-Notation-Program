@@ -35,7 +35,7 @@ public:
 
     int* operator[](int x) { return board[x]; }
 
-    bool can_place(int colour, int x, int y);
+    bool can_place(int colour, int x, int y,int px,int py);
     void place(int colour, int x, int y);
 
     void record_step(int x, int y)
