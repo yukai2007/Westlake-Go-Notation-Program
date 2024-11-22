@@ -25,6 +25,7 @@ void game_board::remove_dead(int colour) {
 				remove(colour, i, j);
 		}
 }
+//判断是否需要提子
 
 void game_board::visit(int colour, int x, int y) {
 	static constexpr int dx[] {-1, 0, 1, 0};
@@ -38,7 +39,7 @@ void game_board::visit(int colour, int x, int y) {
 		++ liberties;
 		return;
 	}
-	// 非己方棋子
+	// 非己方棋子（禁下）
 	if (board[x][y] != colour)
 		return;
 	// 标记当前这个点
@@ -47,6 +48,7 @@ void game_board::visit(int colour, int x, int y) {
 	for (int i = 0; i < 4; ++ i)
 		visit(colour, x + dx[i], y + dy[i]);
 }
+//判断是否可以落子到该位置
 
 void game_board::clear_flags() {
 	count = 1;
@@ -87,7 +89,7 @@ bool game_board::can_place(int colour, int x, int y, int px, int py) {
     static constexpr int dy[] {0, -1, 0, 1};
 	if (board[x][y] != Blank)
 		return false;
-	// 测试禁着点
+	// 测试禁着点（禁下点）
 	game_board temp {*this};
 
     if(abs(px-x)+abs(py-y)==1){
