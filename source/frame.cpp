@@ -205,6 +205,8 @@ void frame::OnPaint(wxPaintEvent& event)
     can.realise(dc);
 }
 
+int px=0,py=0;
+
 void frame::OnLeftUp(wxMouseEvent& event)
 {
     // 落子位置
@@ -213,18 +215,19 @@ void frame::OnLeftUp(wxMouseEvent& event)
     int y = (pos.y + gridSize / 2) / gridSize;
     // 落子颜色
     int thisColour = gameMode == 0 ? -colours.top() : game_board::Black;
-    if (! can.can_place(thisColour, x, y))
+    if (! can.can_place(thisColour, x, y,px,py))
         return;
     colours.push(thisColour);
     while (! colRedos.empty())
         colRedos.pop();
     // 开始落子
-    can.place(thisColour, x, y);
+    can.place(thisColour, x, y,px,py);
     // can.get_board()[x][y] = lastColour;
     Refresh(false);
 
     menuEdit->Enable(ID_Undo, can.can_undo());
     menuEdit->Enable(ID_Redo, can.can_redo());
+	px=x,py=y;
 }
 
 void frame::OnRightUp(wxMouseEvent& event)
