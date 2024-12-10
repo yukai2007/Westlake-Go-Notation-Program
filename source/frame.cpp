@@ -221,7 +221,7 @@ void frame::OnLeftUp(wxMouseEvent& event)
     while (! colRedos.empty())
         colRedos.pop();
     // 开始落子
-    can.place(thisColour, x, y,px,py);
+    can.place(thisColour, x, y);
     // can.get_board()[x][y] = lastColour;
     Refresh(false);
 
@@ -239,7 +239,7 @@ void frame::OnRightUp(wxMouseEvent& event)
     // 落子颜色
     // 不反转落子颜色（停一手）
     int thisColour = gameMode == 0 ? colours.top() : game_board::White;
-    if (! can.can_place(thisColour, x, y))
+    if (! can.can_place(thisColour, x, y,px,py))
         return;
     colours.push(thisColour);
     while (! colRedos.empty())
@@ -251,6 +251,7 @@ void frame::OnRightUp(wxMouseEvent& event)
 
     menuEdit->Enable(ID_Undo, can.can_undo());
     menuEdit->Enable(ID_Redo, can.can_redo());
+	px=x,py=y;
 }
 
 void frame::OnFlipKeep(wxCommandEvent& event)
