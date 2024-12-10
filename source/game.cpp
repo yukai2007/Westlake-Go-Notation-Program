@@ -1,4 +1,5 @@
 #include "game.h"
+#include<bits/stdc++.h>
 
 game_board::game_board() {
 	// 初始化棋盘
