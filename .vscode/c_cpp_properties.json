@@ -21,7 +21,9 @@
             "macFrameworkPath": [
                 "/System/Library/Frameworks",
                 "/Library/Frameworks"
-            ]
+            ],
+            "cStandard": "c17",
+            "cppStandard": "gnu++14"
         },
         {
             "name": "Linux",
@@ -40,7 +42,9 @@
                 ],
                 "limitSymbolsToIncludedHeaders": true,
                 "databaseFilename": ""
-            }
+            },
+            "cStandard": "c17",
+            "cppStandard": "gnu++14"
         },
         {
             "name": "Win32",
@@ -70,8 +74,10 @@
                 ],
                 "limitSymbolsToIncludedHeaders": true,
                 "databaseFilename": ""
-            }
+            },
+            "cStandard": "c17",
+            "cppStandard": "gnu++14"
         }
     ],
-    "version": 3
+    "version": 4
 }

@@ -1,14 +1,3 @@
 object/*
 binary/*
-art/*
-
-!art/black1_alpha.png
-!art/black1.png
-!art/white1_alpha.png
-!art/white1.png
-!art/wooden_texture.png
-!art/xp_style.manifest
-!art/GoPlusPlus.rc
-!art/Icon.ico
-
 test.go
