@@ -85,7 +85,7 @@ void game_board::place(int colour, int x, int y) {
 }
 
 #define ll long long
-bool game_board::can_place(int colour, int x, int y, int px, int py) {
+bool game_board::can_place(int colour, int x, int y, int px, int py,int ppx,int ppy) {
     static constexpr int dx[] {-1, 0, 1, 0};
     static constexpr int dy[] {0, -1, 0, 1};
 	if (board[x][y] != Blank)
@@ -105,7 +105,7 @@ bool game_board::can_place(int colour, int x, int y, int px, int py) {
             if(cx==px&&cy==py)continue;
             if(temp.board[cx][cy]==Blank||temp.board[cx][cy]==colour)cur=0;
         }
-		if(cur)return false;
+		if(cur&&ppx==x&ppy==y)return false;
     }
 
 	temp.place(colour, x, y);
