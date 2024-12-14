@@ -26,12 +26,12 @@ void canvas::selectBackgroundFromPreset()
 {
     // 可选的棋盘背景图片
     std::vector<std::pair<wxString, wxString>> backgrounds = {
-        {wxT("木质纹理1"), wxT("C:/Users/俞开/Desktop/project/art/wooden_texture.png")},
-        {wxT("木质纹理2"), wxT("C:/Users/俞开/Desktop/project/art/wooden_texture_2.png")},
-        {wxT("背景1 紫白"), wxT("C:/Users/俞开/Desktop/project/art/背景1 紫白.png")},
-        {wxT("背景2 黄绿"), wxT("C:/Users/俞开/Desktop/project/art/背景2 黄绿.png")},
-        {wxT("背景3 蓝白"), wxT("C:/Users/俞开/Desktop/project/art/背景3 蓝白.png")},
-        {wxT("背景4 淡橙"), wxT("C:/Users/俞开/Desktop/project/art/背景4 淡橙.png")}
+        {wxT("木质纹理1"), wxT("../art/wooden_texture.png")},
+        {wxT("木质纹理2"), wxT("../art/wooden_texture_2.png")},
+        {wxT("背景1 紫白"), wxT("../art/背景1 紫白.png")},
+        {wxT("背景2 黄绿"), wxT("../art/背景2 黄绿.png")},
+        {wxT("背景3 蓝白"), wxT("../art/背景3 蓝白.png")},
+        {wxT("背景4 淡橙"), wxT("../art/背景4 淡橙.png")}
     };
 
     // 创建选择框
