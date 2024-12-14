@@ -205,7 +205,7 @@ void frame::OnPaint(wxPaintEvent& event)
     can.realise(dc);
 }
 
-int px=0,py=0;
+int px=0,py=0,ppx=0,ppy=0;
 
 void frame::OnLeftUp(wxMouseEvent& event)
 {
@@ -215,7 +215,7 @@ void frame::OnLeftUp(wxMouseEvent& event)
     int y = (pos.y + gridSize / 2) / gridSize;
     // 落子颜色
     int thisColour = gameMode == 0 ? -colours.top() : game_board::Black;
-    if (! can.can_place(thisColour, x, y,px,py))
+    if (! can.can_place(thisColour, x, y,px,py,ppx,ppy))
         return;
     colours.push(thisColour);
     while (! colRedos.empty())
@@ -227,7 +227,7 @@ void frame::OnLeftUp(wxMouseEvent& event)
 
     menuEdit->Enable(ID_Undo, can.can_undo());
     menuEdit->Enable(ID_Redo, can.can_redo());
-	px=x,py=y;
+	ppx=px,ppy=py,px=x,py=y;
 }
 
 void frame::OnRightUp(wxMouseEvent& event)
@@ -239,7 +239,7 @@ void frame::OnRightUp(wxMouseEvent& event)
     // 落子颜色
     // 不反转落子颜色（停一手）
     int thisColour = gameMode == 0 ? colours.top() : game_board::White;
-    if (! can.can_place(thisColour, x, y,px,py))
+    if (! can.can_place(thisColour, x, y,px,py,ppx,ppy))
         return;
     colours.push(thisColour);
     while (! colRedos.empty())
@@ -251,7 +251,7 @@ void frame::OnRightUp(wxMouseEvent& event)
 
     menuEdit->Enable(ID_Undo, can.can_undo());
     menuEdit->Enable(ID_Redo, can.can_redo());
-	px=x,py=y;
+	ppx=px,ppy=py,px=x,py=y;
 }
 
 void frame::OnFlipKeep(wxCommandEvent& event)
