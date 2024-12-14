@@ -22,7 +22,6 @@ public:
     canvas();
     void realise(wxDC& target);
     game_board& get_board() { return board.top(); }
-
     bool can_place(int colour, int x, int y,int px,int py,int ppx,int ppy)
         { return board.top().can_place(colour, x, y,px,py,ppx,ppy); }
     void place(int colour, int x, int y)
@@ -62,4 +61,7 @@ public:
         redos.pop();
     }
     //重做操作(redo)
+private:
+    void selectBackgroundFromPreset();
+    void preparePalete();
 };
