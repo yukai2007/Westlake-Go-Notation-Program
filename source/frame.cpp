@@ -215,7 +215,7 @@ void frame::OnLeftUp(wxMouseEvent& event)
     int y = (pos.y + gridSize / 2) / gridSize;
     // 落子颜色
     int thisColour = gameMode == 0 ? -colours.top() : game_board::Black;
-    if (! can.can_place(thisColour, x, y,px,py,ppx,ppy))
+    if (! can.can_place(thisColour, x, y))
         return;
     colours.push(thisColour);
     while (! colRedos.empty())
@@ -239,7 +239,7 @@ void frame::OnRightUp(wxMouseEvent& event)
     // 落子颜色
     // 不反转落子颜色（停一手）
     int thisColour = gameMode == 0 ? colours.top() : game_board::White;
-    if (! can.can_place(thisColour, x, y,px,py,ppx,ppy))
+    if (! can.can_place(thisColour, x, y))
         return;
     colours.push(thisColour);
     while (! colRedos.empty())
