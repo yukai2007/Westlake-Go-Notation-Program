@@ -85,7 +85,7 @@ void game_board::place(int colour, int x, int y) {
 }
 
 #define ll long long
-bool game_board::can_place(int colour, int x, int y, int px, int py,int ppx,int ppy) {
+bool game_board::can_place(int colour, int x, int y) {
     static constexpr int dx[] {-1, 0, 1, 0};
     static constexpr int dy[] {0, -1, 0, 1};
 	if (board[x][y] != Blank)
@@ -93,20 +93,22 @@ bool game_board::can_place(int colour, int x, int y, int px, int py,int ppx,int 
 	// 测试禁着点（禁下点）
 	game_board temp {*this};
 
-    if(abs(px-x)+abs(py-y)==1){
-        ll cur=1;
-        for(ll i=0;i<4;i++){
-            ll cx=px+dx[i],cy=py+dy[i];
-            if(cx==x&&cy==y)continue;
-            if(temp.board[cx][cy]==Blank||temp.board[cx][cy]==-colour)cur=0;
-        }
-        for(ll i=0;i<4;i++){
-            ll cx=x+dx[i],cy=y+dy[i];
-            if(cx==px&&cy==py)continue;
-            if(temp.board[cx][cy]==Blank||temp.board[cx][cy]==colour)cur=0;
-        }
-		if(cur&&ppx==x&ppy==y)return false;
-    }
+    // if(abs(px-x)+abs(py-y)==1){
+    //     ll cur=1;
+    //     for(ll i=0;i<4;i++){
+    //         ll cx=px+dx[i],cy=py+dy[i];
+    //         if(cx==x&&cy==y)continue;
+    //         if(temp.board[cx][cy]==Blank||temp.board[cx][cy]==-colour)cur=0;
+    //     }
+    //     for(ll i=0;i<4;i++){
+    //         ll cx=x+dx[i],cy=y+dy[i];
+    //         if(cx==px&&cy==py)continue;
+    //         if(temp.board[cx][cy]==Blank||temp.board[cx][cy]==colour)cur=0;
+    //     }
+	// 	if(cur&&tx==x&ty==y)return false;
+    // }
+
+	if(tx==x&&ty==y)return false;
 
 	temp.place(colour, x, y);
 
@@ -124,5 +126,21 @@ bool game_board::can_place(int colour, int x, int y, int px, int py,int ppx,int 
 			if (temp.liberties == 0)
 				return false;
 		}
+	ll cur1=0,cur2=0,ux=0,uy=0,tagg=0;
+    for(ll i=0;i<4;i++){
+        ll cx=x+dx[i],cy=y+dy[i];
+		cur1+=temp.board[cx][cy]==-colour;
+		if(!temp.board[cx][cy])ux=cx,uy=cy,cur2++;
+	}
+	if(cur1==3&&cur2==1){
+		tagg=1;
+		for(ll i=0;i<4;i++){
+			ll cx=ux+dx[i],cy=uy+dy[i];
+			if(cx==x&&cy==y)continue;
+			if(temp.board[cx][cy]^colour){tagg=0;break;}
+		}
+	}
+	if(board[ux][uy]!=-colour)tagg=0;
+	tx=tagg?ux:0,ty=tagg?uy:0;
 	return true;
 }
