@@ -22,8 +22,8 @@ public:
     canvas();
     void realise(wxDC& target);
     game_board& get_board() { return board.top(); }
-    bool can_place(int colour, int x, int y,int px,int py,int ppx,int ppy)
-        { return board.top().can_place(colour, x, y,px,py,ppx,ppy); }
+    bool can_place(int colour, int x, int y)
+        { return board.top().can_place(colour, x, y); }
     void place(int colour, int x, int y)
     {
         game_board tmp{board.top()};
