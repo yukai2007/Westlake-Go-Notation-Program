@@ -17,7 +17,8 @@ private:
     int lib_flags[21][21];  // 数气算法中的标记
     int count{1};       // 当前有几块棋
     int liberties{0};   // 当前处理的棋的气数
-
+    int tx{0};
+    int ty{0};
     int step{0};
 protected:
     void remove_dead(int colour);
@@ -35,7 +36,7 @@ public:
 
     int* operator[](int x) { return board[x]; }
 
-    bool can_place(int colour, int x, int y,int px,int py,int ppx,int ppy);
+    bool can_place(int colour, int x, int y);
     void place(int colour, int x, int y);
 
     void record_step(int x, int y)
