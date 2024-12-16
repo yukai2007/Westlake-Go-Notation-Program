@@ -129,15 +129,15 @@ bool game_board::can_place(int colour, int x, int y) {
 	ll cur1=0,cur2=0,ux=0,uy=0,tagg=0;
     for(ll i=0;i<4;i++){
         ll cx=x+dx[i],cy=y+dy[i];
-		cur1+=temp.board[cx][cy]==-colour;
-		if(!temp.board[cx][cy])ux=cx,uy=cy,cur2++;
+		cur1+=temp.board[cx][cy]==-colour||cx==0||cx>19||cy==0||cy>19;
+		if(!temp.board[cx][cy]&&cx&&cx<=19&&cy&&cy<=19)ux=cx,uy=cy,cur2++;
 	}
 	if(cur1==3&&cur2==1){
 		tagg=1;
 		for(ll i=0;i<4;i++){
 			ll cx=ux+dx[i],cy=uy+dy[i];
 			if(cx==x&&cy==y)continue;
-			if(temp.board[cx][cy]^colour){tagg=0;break;}
+			if(temp.board[cx][cy]^colour&&cx&&cx<=19&&cy&&cy<=19){tagg=0;break;}
 		}
 	}
 	if(board[ux][uy]!=-colour)tagg=0;
