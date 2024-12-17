@@ -109,8 +109,9 @@ void canvas::realise(wxDC& target)
     wxMemoryDC stoneDC[]{{stone[0]}, {stone[1]}};
     const wxSize sz = stone[0].GetSize();
 
-    // 准备字体大小
-    target.SetFont(wxFont{wxFontInfo{14}.Bold().FaceName("Microsoft JhengHei")});
+    // 默认字体大小
+    target.SetFont(wxFont{wxFontInfo{10}.Bold().FaceName("Microsoft JhengHei")});
+
     // 画棋子
     for (int i = 1; i <= 19; ++i)
         for (int j = 1; j <= 19; ++j)
@@ -130,18 +131,30 @@ void canvas::realise(wxDC& target)
             if (board.top()[i][j] != game_board::Blank)
             {
                 target.StretchBlit(wxPoint{x, y}, wxSize{gridSize, gridSize}, curStone, wxPoint{0, 0}, sz);
+                
                 int cnt = board.top().record[i][j];
                 if (cnt != 0)
                 {
                     wxString label = wxString::Format("%d", cnt);
-                    wxSize sz = target.GetTextExtent(label);
-                    wxPoint pos{i * gridSize - sz.x / 2, j * gridSize - sz.y / 2};
+
+                    // 如果数字 >= 100，使用小一点的字体
+                    if (cnt >= 100) {
+                        target.SetFont(wxFont{wxFontInfo{8}.Bold().FaceName("Microsoft JhengHei")}); // 小字体
+                    } else {
+                        target.SetFont(wxFont{wxFontInfo{10}.Bold().FaceName("Microsoft JhengHei")}); // 默认字体
+                    }
+
+                    wxSize textSize = target.GetTextExtent(label);
+                    wxPoint pos{i * gridSize - textSize.x / 2, j * gridSize - textSize.y / 2};
                     target.DrawText(label, pos);
                 }
             }
         }
+
+    // 恢复默认字体
     target.SetFont(wxNullFont);
 }
+
 
 void canvas::load(std::istream& input)
 {
