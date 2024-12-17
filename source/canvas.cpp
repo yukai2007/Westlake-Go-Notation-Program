@@ -30,7 +30,7 @@ void canvas::selectBackgroundFromPreset()
         {wxT("木质纹理2"), wxT("../art/wooden_texture_2.png")},
         {wxT("背景1 紫白"), wxT("../art/背景1 紫白.png")},
         {wxT("背景2 黄绿"), wxT("../art/背景2 黄绿.png")},
-        {wxT("背景3 蓝白"), wxT("../art/背景3 蓝白.png")},
+        {wxT("背景3 天蓝"), wxT("../art/天蓝.png")},
         {wxT("背景4 淡橙"), wxT("../art/背景4 淡橙.png")}
     };
 
