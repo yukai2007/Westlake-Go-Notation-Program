@@ -1,5 +1,6 @@
 #include "game.h"
 #include "math.h"
+#include<stdio.h>
 
 game_board::game_board() {
 	// 初始化棋盘
@@ -123,6 +124,7 @@ bool game_board::can_place(int colour, int x, int y) {
 			temp.visit(colour, i, j);
 			++ temp.count;
 			// 如果没有气，就提子
+			printf("i=%lld j=%lld lib=%lld\n",i,j,temp.liberties);
 			if (temp.liberties == 0)
 				return false;
 		}
