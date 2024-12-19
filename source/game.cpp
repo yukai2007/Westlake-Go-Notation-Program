@@ -87,6 +87,7 @@ void game_board::place(int colour, int x, int y) {
 
 #define ll long long
 bool game_board::can_place(int colour, int x, int y) {
+	printf("!");
     static constexpr int dx[] {-1, 0, 1, 0};
     static constexpr int dy[] {0, -1, 0, 1};
 	if (board[x][y] != Blank)
@@ -116,7 +117,7 @@ bool game_board::can_place(int colour, int x, int y) {
 	temp.clear_flags();
 	for (int i = 1; i <= 19; ++ i)
 		for (int j = 1; j <= 19; ++ j) {
-			clear_lib_flags();
+			temp.clear_lib_flags();
 			// 不是当前颜色，或者已经访问过
 			if (temp.board[i][j] != colour || temp.flags[i][j] != 0)
 				continue;
@@ -125,6 +126,7 @@ bool game_board::can_place(int colour, int x, int y) {
 			++ temp.count;
 			// 如果没有气，就提子
 			printf("i=%lld j=%lld lib=%lld\n",i,j,temp.liberties);
+			fflush(stdout);
 			if (temp.liberties == 0)
 				return false;
 		}
